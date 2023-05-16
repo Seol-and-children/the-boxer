@@ -9,5 +9,6 @@ public class HealthTraining {
 
         player.setStamina(player.getStamina()+10);
         System.out.println("플레이어의 현재 힘 스탯 :" + player.getStamina());
+        System.out.println("커밋테스트");
     }
 }
