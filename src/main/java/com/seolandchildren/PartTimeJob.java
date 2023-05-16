@@ -9,9 +9,10 @@ public class PartTimeJob {
         Random random = new Random();
         int chance = random.nextInt(3);
 
-        System.out.println("아르바이트 진행중...");
-
         try {
+            Thread.sleep(2000);
+            System.out.println("아르바이트 진행중...");
+
             Thread.sleep(2000);
             System.out.println("아르바이트 진행중...");
 
