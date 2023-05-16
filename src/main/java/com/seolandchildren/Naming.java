@@ -14,6 +14,6 @@ public class Naming {
 
         System.out.println("축하합니다!\n플레이어가 생성되었습니다.\n" +
                 "플레이어의 이름이 " + playerName + "(으)로 설정되었습니다.\n" +
-                "게임을 시작합니다.");
+                "게임을 시작합니다.") ;
     }
 }
