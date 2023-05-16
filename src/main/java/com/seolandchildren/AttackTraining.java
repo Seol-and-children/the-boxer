@@ -1,7 +1,7 @@
 package com.seolandchildren;
 import com.seolandchildren.Player;
 public class AttackTraining {
-   public void AttackTraining() {
+   public void agilityTraining() {
        Player player = new Player();
 
        System.out.println("플레이어의 현재 힘 스탯 :" + player.getStrength());
