@@ -5,7 +5,7 @@ import com.seolandchildren.shop.Shop;
 import java.util.Scanner;
 
 public class Menu {
-    private int turnsLeft = 48;
+    private int turnsLeft = 48;    // 남은 턴
 
     public void menu() {
         Scanner scanner = new Scanner(System.in);
@@ -31,11 +31,11 @@ public class Menu {
 //                    startBattle.startBattle();
 //                    turnsLeft -= 1;
 //                    break;
-//                case 2:
-//                    Training training = new Training();
-//                    training.training();
-//                    turnsLeft -= 1;
-//                    break;
+                case 2:
+                    Training training = new Training(player);
+                    training.training();
+                    turnsLeft -= 1;
+                    break;
                 case 3:
                     PartTimeJob partTimeJob = new PartTimeJob(player);
                     partTimeJob.partTimeJob();

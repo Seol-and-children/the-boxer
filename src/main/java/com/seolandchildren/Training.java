@@ -1,12 +1,22 @@
 package com.seolandchildren;
 
+import com.seolandchildren.training.AgilityTraining;
+import com.seolandchildren.training.AttackTraining;
+import com.seolandchildren.training.HealthTraining;
+
 import java.util.Scanner;
 
 public class Training {
-    public static void main(String[] args) {
-        AttackTraining attackTraining = new AttackTraining();
-        AgilityTraining agilityTraining = new AgilityTraining();
-        HealthTraining healthTraining = new HealthTraining();
+    private final Player player;
+
+    public Training(Player player) {
+        this.player = player;
+    }
+
+    public void training() {
+        AttackTraining attackTraining = new AttackTraining(player);
+        AgilityTraining agilityTraining = new AgilityTraining(player);
+        HealthTraining healthTraining = new HealthTraining(player);
         Scanner sc = new Scanner(System.in);
 
         do{
@@ -32,10 +42,10 @@ public class Training {
                 case 4:
                     return;
                 default:
-                    System.out.println("잘못입력하셨습니다 다시 입력하세요");
+                    System.out.println("잘못 입력하셨습니다. 다시 입력하세요");
                     break;
             }
-        }while (true);
+        } while (true);
 
     }
 }
