@@ -4,7 +4,7 @@ import com.seolandchildren.Player;
 
 public class AttackTraining {
 
-    private Player player;
+    private final Player player;
 
     public AttackTraining(Player player) {
         this.player = player;
