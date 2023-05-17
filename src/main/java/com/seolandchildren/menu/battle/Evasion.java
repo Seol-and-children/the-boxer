@@ -8,14 +8,12 @@ public class Evasion {
         if (ran <= avoid) {
             finalHp = attackerHp - (int)(takeAttack * 1.5);
             WhoHp = "0" + finalHp;
-            System.out.println(WhoHp);
-            return WhoHp;
         }
         else {
             finalHp = takeHp - attackerAttack;
             WhoHp = "1" + finalHp;
-            System.out.println(WhoHp);
-            return WhoHp;
         }
+        System.out.println(WhoHp);
+        return WhoHp;
     }
 }

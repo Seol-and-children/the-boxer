@@ -1,5 +1,6 @@
 package com.seolandchildren;
 
+import com.seolandchildren.menu.Naming;
 import com.seolandchildren.menu.shop.Item;
 
 public class Player {
@@ -11,7 +12,7 @@ public class Player {
     private String name;
 
     public Player() {
-        name = "임시 이름";
+        name = Naming.playerName;
         strength = 10;
         agility = 10;
         stamina = 100;

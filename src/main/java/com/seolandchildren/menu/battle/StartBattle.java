@@ -1,9 +1,10 @@
 package com.seolandchildren.menu.battle;
 
+import com.seolandchildren.Player;
+
 import java.util.Scanner;
 
 public class StartBattle {
-    // 이 클래스 안에서 사용될 변수들의 접근을 막기위해 private화
     private int playerHp;
     private int enemyHp;
     private int enemyAttack;
@@ -14,22 +15,24 @@ public class StartBattle {
     private int takeHp;
     private String playerName;
     private String enemyName;
+    private Player player;
+
+    public StartBattle(Player player) {
+        this.player = player;
+    }
 
     public void startBattle() {
         Scanner sc = new Scanner(System.in);
         Guard gd = new Guard();
         Attack atk = new Attack();
         Evasion evs = new Evasion();
-        //Player player = new Player();     플레이어 정보를 받아온다.
-
-        playerHp = 100;
-        ;      //player.getStamina();        임시
+        playerHp = player.getStamina();
+        playerAttack = player.getStrength();
+        playerAvoid = player.getAgility();
+        playerName = player.getName();
         enemyHp = 100;
-        playerAttack = 20;      //player.getStrength();
         enemyAttack = 20;
-        playerAvoid = 15;       //player.getAgility();
         enemyAvoid = 15;
-        playerName = "설광진";      //player.getName();
         enemyName = "\'스컬\'한지석";
         enemyCNT = 0;
         do {
@@ -103,14 +106,14 @@ public class StartBattle {
                     if (enemyCNT <= 2) {     //적이 공격했을 때
                         String WhoHp = evs.evasion(enemyHp, enemyAttack, playerHp, playerAttack, playerAvoid);
                         if (WhoHp.charAt(0) == '0') {
-                            takeHp = Integer.valueOf(WhoHp.substring(1));
+                            takeHp = Integer.parseInt(WhoHp.substring(1));
                             System.out.println("==========\n" +
                                     playerName + "의 회피!\t" + enemyName + "의 공격!\n" +
                                     "적의 공격을 회피하고 카운터를 날렸다!!" +
                                     enemyName + "에게 " + (enemyHp - takeHp) + "피해!!");
                             enemyHp = takeHp;
                         } else {
-                            takeHp = Integer.valueOf(WhoHp.substring(1));
+                            takeHp = Integer.parseInt(WhoHp.substring(1));
                             System.out.println("==========\n" +
                                     playerName + "의 회피!\t" + enemyName + "의 공격!\n" +
                                     "회피에 실패했다!!" +
@@ -141,7 +144,6 @@ public class StartBattle {
     }
 
     public static int Ran() {
-        int num = (int) (Math.random() * 4) + 1;
-        return num;
+        return (int) (Math.random() * 4) + 1;
     }
 }

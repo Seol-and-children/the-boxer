@@ -1,6 +1,7 @@
 package com.seolandchildren.menu;
 
 import com.seolandchildren.Player;
+import com.seolandchildren.menu.battle.StartBattle;
 import com.seolandchildren.menu.shop.Shop;
 import com.seolandchildren.menu.training.Training;
 
@@ -28,11 +29,11 @@ public class Menu {
             int choice = scanner.nextInt();
 
             switch (choice) {
-//                case 1:
-//                    StartBattle startBattle = new StartBattle();
-//                    startBattle.startBattle();
-//                    turnsLeft -= 1;
-//                    break;
+                case 1:
+                    StartBattle startBattle = new StartBattle(player);
+                    startBattle.startBattle();
+                    turnsLeft -= 1;
+                    break;
                 case 2:
                     Training training = new Training(player);
                     training.training();
