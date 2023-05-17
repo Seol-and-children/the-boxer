@@ -6,6 +6,15 @@ public class Player {
     private int stamina; // 체력
     private String equipment; // 장비
     private int money; // 자금
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Player() {
         strength = 10;
@@ -13,6 +22,7 @@ public class Player {
         stamina = 100;
         equipment = "맨 주먹";
         money = 100;
+        name = "임시 이름";
     }
 
     public int getStrength() {
