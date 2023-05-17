@@ -1,4 +1,4 @@
-package com.seolandchildren;
+package com.seolandchildren.menu.battle;
 
 import java.util.Scanner;
 

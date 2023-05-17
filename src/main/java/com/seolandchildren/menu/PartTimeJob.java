@@ -1,4 +1,6 @@
-package com.seolandchildren;
+package com.seolandchildren.menu;
+
+import com.seolandchildren.Player;
 
 import java.util.Random;
 

@@ -1,6 +1,7 @@
-package com.seolandchildren;
+package com.seolandchildren.menu;
 
-import com.seolandchildren.shop.Item;
+import com.seolandchildren.Player;
+import com.seolandchildren.menu.shop.Item;
 
 public class StatCheck {
     String name;

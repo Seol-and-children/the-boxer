@@ -1,4 +1,4 @@
-package com.seolandchildren;
+package com.seolandchildren.menu.battle;
 
 public class Evasion {
     public String evasion(int attackerHp, int attackerAttack, int takeHp, int takeAttack, int avoid) {

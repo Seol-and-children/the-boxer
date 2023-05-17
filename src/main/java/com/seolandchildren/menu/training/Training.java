@@ -1,8 +1,6 @@
-package com.seolandchildren;
+package com.seolandchildren.menu.training;
 
-import com.seolandchildren.training.AgilityTraining;
-import com.seolandchildren.training.AttackTraining;
-import com.seolandchildren.training.HealthTraining;
+import com.seolandchildren.Player;
 
 import java.util.Scanner;
 

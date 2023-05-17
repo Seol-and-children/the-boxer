@@ -1,4 +1,4 @@
-package com.seolandchildren.shop;
+package com.seolandchildren.menu.shop;
 
 import com.seolandchildren.Player;
 

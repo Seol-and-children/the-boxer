@@ -1,4 +1,4 @@
-package com.seolandchildren.training;
+package com.seolandchildren.menu.training;
 
 import com.seolandchildren.Player;
 

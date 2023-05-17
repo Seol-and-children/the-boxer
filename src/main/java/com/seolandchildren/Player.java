@@ -1,6 +1,6 @@
 package com.seolandchildren;
 
-import com.seolandchildren.shop.Item;
+import com.seolandchildren.menu.shop.Item;
 
 public class Player {
     private int strength; // 힘
