@@ -1,10 +1,19 @@
 package com.seolandchildren.shop;
 
+import com.seolandchildren.Player;
+
 import java.util.Scanner;
 
 public class Shop {
-    int money = 100000; // 보유 금액
-    private Item equippedItem = new Item("맨주먹", 0, 0); // 초기장비
+    private Player player;
+    private int money;
+    private Item equippedItem; // 초기장비
+
+    public Shop(Player player) {
+        this.player = player;
+        this.money = player.getMoney();
+        this.equippedItem = player.getEquipment();
+    }
 
     public void purchase() {
         while (true) {
@@ -50,7 +59,7 @@ public class Shop {
     }
 
     public void equipItem(Item item) {
-        if (item.getPrice() > money) {
+        if (item.getPrice() > player.getMoney()) {
             System.out.println("보유 금액이 부족합니다.");
             return;
         } else if (equippedItem.getAttack() > item.getAttack()) {
@@ -63,12 +72,16 @@ public class Shop {
 
         if (equippedItem != null) {
             // 현재 장착된 아이템을 해제합니다
+            player.setStrength(player.getStrength() - equippedItem.getAttack());
             System.out.println("착용중인 아이템 " + equippedItem.getName() + "(을)를 해제하였습니다.");
         }
 
         equippedItem = item;
-        money -= item.getPrice(); // 새로운 아이템의 가격을 돈에서 차감
-        //player.strength += item.getAttack(); 플레이어 공격력 증가시키는 코드
-        System.out.println(item.getName() + "(을)를 장착하였습니다. 공격력이 " + item.getAttack() + "만큼 증가합니다.");
+        player.setMoney(player.getMoney() - item.getPrice()); // 새로운 아이템의 가격을 돈에서 차감
+        money -= item.getPrice();
+        player.setStrength(player.getStrength() + item.getAttack()); // 플레이어 공격력 증가시키는 코드
+        player.setEquipment(item); // Player 장비 변경
+        System.out.println(item.getName() + "(을)를 장착하였습니다.");
+        System.out.println("공격력이 " + item.getAttack() + " 올랐습니다. 현재 공격력은 " + player.getStrength() + "입니다.");
     }
 }

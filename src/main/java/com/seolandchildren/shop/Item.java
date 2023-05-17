@@ -1,9 +1,9 @@
 package com.seolandchildren.shop;
 
 public class Item {
-    private String name;
-    private int attack;
-    private int price;
+    private final String name;
+    private final int attack;
+    private final int price;
 
     public Item(String name, int attack, int price) {
         this.name = name;

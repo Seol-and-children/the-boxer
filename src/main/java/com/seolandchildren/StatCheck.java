@@ -1,11 +1,14 @@
 package com.seolandchildren;
 
+import com.seolandchildren.shop.Item;
+
 public class StatCheck {
     String name;
     int strength;
     int agility;
     int stamina;
     int money;
+    Item equipment;
 
     public void checkStat(Player player) {
         name = player.getName();
@@ -13,6 +16,7 @@ public class StatCheck {
         agility = player.getAgility();
         stamina = player.getStamina();
         money = player.getMoney();
+        equipment = player.getEquipment();
     }
 
     @Override
@@ -23,6 +27,7 @@ public class StatCheck {
                 "\n민첩 : " + this.agility +
                 "\n체력 : " + this.stamina +
                 "\n보유 금액 : " + this.money +
-                "\n======================================";
+                "\n장착중인 장비 : " + this.equipment.getName() + " (힘 +" + this.equipment.getAttack() + ")" +
+                "\n========================================";
     }
 }

@@ -3,7 +3,13 @@ package com.seolandchildren;
 import java.util.Random;
 
 public class PartTimeJob {
+    private final Player player;
     private int dollar;
+
+    public PartTimeJob(Player player) {
+        this.player = player;
+        this.dollar = player.getMoney();
+    }
 
     public void partTimeJob() {
         Random random = new Random();
@@ -40,5 +46,6 @@ public class PartTimeJob {
         }
 
         System.out.println("현재 소지한 돈: $" + dollar);
+        player.setMoney(dollar);
     }
 }
