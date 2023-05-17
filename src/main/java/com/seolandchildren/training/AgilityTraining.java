@@ -1,4 +1,6 @@
-package com.seolandchildren;
+package com.seolandchildren.training;
+
+import com.seolandchildren.Player;
 
 public class AgilityTraining {
     public void agilityTraining(){
