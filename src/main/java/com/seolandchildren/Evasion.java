@@ -1,15 +1,21 @@
 package com.seolandchildren;
 
 public class Evasion {
-    public int evasion(int Hp, int attack, int evoid) {
-        int ran = (int)(Math.random()*100)+1;
+    public String evasion(int attackerHp, int attackerAttack, int takeHp, int takeAttack, int avoid) {
+        int ran = (int) (Math.random() * 100) + 1;
         int finalHp;
-        if (ran <= evoid){
-            finalHp = Hp - (int)(attack*1.5);
-            return finalHp;
+        String WhoHp;
+        if (ran <= avoid) {
+            finalHp = attackerHp - (int)(takeAttack * 1.5);
+            WhoHp = "0" + finalHp;
+            System.out.println(WhoHp);
+            return WhoHp;
         }
         else {
-            return Hp;
+            finalHp = takeHp - attackerAttack;
+            WhoHp = "1" + finalHp;
+            System.out.println(WhoHp);
+            return WhoHp;
         }
     }
 }
