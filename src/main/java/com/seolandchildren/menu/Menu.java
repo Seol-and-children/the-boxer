@@ -7,6 +7,8 @@ import com.seolandchildren.menu.training.Training;
 
 import java.util.Scanner;
 
+import static com.seolandchildren.menu.battle.StartBattle.enemyOrder;
+
 public class Menu {
     private int turnsLeft = 48;    // 남은 턴
 
@@ -30,7 +32,7 @@ public class Menu {
 
             switch (choice) {
                 case 1:
-                    StartBattle startBattle = new StartBattle(player);
+                    StartBattle startBattle = new StartBattle(enemyOrder, player);
                     startBattle.startBattle();
                     turnsLeft -= 1;
                     break;

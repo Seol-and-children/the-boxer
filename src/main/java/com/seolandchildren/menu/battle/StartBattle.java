@@ -1,6 +1,7 @@
 package com.seolandchildren.menu.battle;
 
 import com.seolandchildren.Player;
+import com.seolandchildren.menu.Rival;
 
 import java.util.Scanner;
 
@@ -11,13 +12,16 @@ public class StartBattle {
     private int playerAttack;
     private int playerAvoid;
     private int enemyAvoid;
-    private int enemyCNT;
+    private int enemyAction;
+    public static int enemyOrder;
     private int takeHp;
     private String playerName;
     private String enemyName;
     private Player player;
+    private int enemyMoney;
 
-    public StartBattle(Player player) {
+    public StartBattle(int enemyOrder, Player player) {
+        this.enemyOrder = enemyOrder;
         this.player = player;
     }
 
@@ -26,15 +30,18 @@ public class StartBattle {
         Guard gd = new Guard();
         Attack atk = new Attack();
         Evasion evs = new Evasion();
+        Rival rival = new Rival(enemyOrder);
         playerHp = player.getStamina();
         playerAttack = player.getStrength();
         playerAvoid = player.getAgility();
         playerName = player.getName();
-        enemyHp = 100;
-        enemyAttack = 20;
-        enemyAvoid = 15;
-        enemyName = "\'스컬\'한지석";
-        enemyCNT = 0;
+        enemyHp = rival.getHealth();
+        enemyAttack = rival.getAttack();
+        enemyAvoid = rival.getAgility();
+        enemyName = rival.getName();
+        enemyMoney = rival.getMoney();
+        enemyAction = 0;
+
         do {
             if (playerHp <= 0 || enemyHp <= 0) break;
             System.out.print("\n==========\n" +
@@ -44,11 +51,10 @@ public class StartBattle {
                     playerName + " HP : " + playerHp + "  ||  " + enemyName + " HP : " + enemyHp + "\n==========\n" +
                     playerName + "의 행동은? : ");
             int cnt = sc.nextInt();
-            enemyCNT = Ran();
-            System.out.println(enemyCNT);
+            enemyAction = Ran();
             switch (cnt) {
                 case 1:         //플레이어가 공격을 했을 경우
-                    if (enemyCNT <= 2) {           //적이 공격했을 때
+                    if (enemyAction <= 2) {           //적이 공격했을 때
                         System.out.println("==========\n" +
                                 playerName + "의 공격!\t " + enemyName + "의 공격!\n" +
                                 "적과 공격을 주고 받았다.\n" +
@@ -56,14 +62,14 @@ public class StartBattle {
                                 enemyName + "이 " + playerAttack + "의 피해를 받았다!!");
                         playerHp = atk.attack(playerHp, enemyAttack);
                         enemyHp = atk.attack(enemyHp, playerAttack);
-                    } else if (enemyCNT == 3) {       //적이 방어했을 때
+                    } else if (enemyAction == 3) {       //적이 방어했을 때
                         takeHp = gd.guard(enemyHp, playerAttack);
                         System.out.println("==========\n" +
                                 playerName + "의 공격! \t " + enemyName + "의 방어!\n" +
                                 "적이 공격을 막았다.\n" +
                                 enemyName + "에게 " + (enemyHp - takeHp) + "피해!!");
                         enemyHp = takeHp;
-                    } else if (enemyCNT == 4) {       //적이 회피했을 때
+                    } else if (enemyAction == 4) {       //적이 회피했을 때
                         String WhoHp = evs.evasion(playerHp, playerAttack, enemyHp, enemyAttack, enemyAvoid);
                         if (WhoHp.charAt(0) == '0') {
                             takeHp = Integer.valueOf(WhoHp.substring(1));
@@ -84,18 +90,18 @@ public class StartBattle {
                     break;
 
                 case 2:         //플레이어가 방어를 했을 경우
-                    if (enemyCNT <= 2) {           //적이 공격했을 때
+                    if (enemyAction <= 2) {           //적이 공격했을 때
                         takeHp = gd.guard(playerHp, enemyAttack);
                         System.out.println("==========\n" +
                                 playerName + "의 방어! \t" + enemyName + "의 공격!\n" +
                                 "적의 공격을 방어했다.\n" +
                                 playerName + "에게 " + (playerHp - takeHp) + "피해!!");
                         playerHp = takeHp;
-                    } else if (enemyCNT == 3) {       //적이 방어했을 때
+                    } else if (enemyAction == 3) {       //적이 방어했을 때
                         System.out.println("==========\n" +
                                 playerName + "의 방어! \t" + enemyName + "의 방어!\n" +
                                 "아무일도 일어나지 않았다.");
-                    } else if (enemyCNT == 4) {       //적이 회피했을 때
+                    } else if (enemyAction == 4) {       //적이 회피했을 때
                         System.out.println("==========\n" +
                                 playerName + "의 방어! \t" + enemyName + "의 회피!\n" +
                                 "아무일도 일어나지 않았다.");
@@ -103,7 +109,7 @@ public class StartBattle {
                     break;
 
                 case 3:         //플레이어가 회피를 했을 경우
-                    if (enemyCNT <= 2) {     //적이 공격했을 때
+                    if (enemyAction <= 2) {     //적이 공격했을 때
                         String WhoHp = evs.evasion(enemyHp, enemyAttack, playerHp, playerAttack, playerAvoid);
                         if (WhoHp.charAt(0) == '0') {
                             takeHp = Integer.parseInt(WhoHp.substring(1));
@@ -120,11 +126,11 @@ public class StartBattle {
                                     playerName + "에게 " + (playerHp - takeHp) + "피해!!");
                             playerHp = takeHp;
                         }
-                    } else if (enemyCNT == 3) {       //적이 방어했을 때
+                    } else if (enemyAction == 3) {       //적이 방어했을 때
                         System.out.println("==========\n" +
                                 playerName + "의 회피!\t" + enemyName + "의 방어!\n" +
                                 "아무일도 일어나지 않았다.");
-                    } else if (enemyCNT == 4) {       //적이 회피했을 때
+                    } else if (enemyAction == 4) {       //적이 회피했을 때
                         System.out.println("==========\n" +
                                 playerName + "의 회피!\t" + enemyName + "의 회피!\n" +
                                 "아무일도 일어나지 않았다.");
@@ -136,8 +142,12 @@ public class StartBattle {
             }
         } while (true);
         if (playerHp <= 0 && enemyHp > 0) System.out.println(playerName + "\n패배!!");
-        else if (playerHp > 0 && enemyHp <= 0) System.out.println(playerName + "\n승리!!!!!!");
-        else {
+        else if (playerHp > 0 && enemyHp <= 0) {
+            System.out.println(playerName + "\n승리!!!!!!");
+            player.setMoney(player.getMoney() + enemyMoney);
+            System.out.println("파이트머니 " + enemyMoney + "$를 얻었다!");
+            enemyOrder++;
+        } else {
             System.out.println("\n무승부!! 리매치!!");
             startBattle();
         }
