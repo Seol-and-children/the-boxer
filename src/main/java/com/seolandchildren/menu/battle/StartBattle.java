@@ -1,5 +1,6 @@
 package com.seolandchildren.menu.battle;
 
+import com.seolandchildren.Application;
 import com.seolandchildren.Player;
 import com.seolandchildren.menu.Rival;
 
@@ -72,14 +73,14 @@ public class StartBattle {
                     } else if (enemyAction == 4) {       //적이 회피했을 때
                         String WhoHp = evs.evasion(playerHp, playerAttack, enemyHp, enemyAttack, enemyAvoid);
                         if (WhoHp.charAt(0) == '0') {
-                            takeHp = Integer.valueOf(WhoHp.substring(1));
+                            takeHp = Integer.parseInt(WhoHp.substring(1));
                             System.out.println("==========\n" +
                                     playerName + "의 공격!\t" + enemyName + "의 회피!\n" +
                                     "적의 공격을 회피하고 카운터를 날렸다!!" +
                                     playerName + "에게 " + (playerHp - takeHp) + "피해!!");
                             playerHp = takeHp;
                         } else {
-                            takeHp = Integer.valueOf(WhoHp.substring(1));
+                            takeHp = Integer.parseInt(WhoHp.substring(1));
                             System.out.println("==========\n" +
                                     playerName + "의 공격!\t" + enemyName + "의 회피!\n" +
                                     "회피에 실패했다!!" +
@@ -146,6 +147,28 @@ public class StartBattle {
             System.out.println(playerName + "\n승리!!!!!!");
             player.setMoney(player.getMoney() + enemyMoney);
             System.out.println("파이트머니 " + enemyMoney + "$를 얻었다!");
+            if (enemyName.equals("\"제천대성\"박형준")) {
+                System.out.println("축하합니다! 당신은 삼육대학교 복싱 챔피언입니다.");
+
+                try {
+                    Thread.sleep(1000);
+                    System.out.println("하지만 당신의 복수는 끝나지 않았습니다.");
+
+                    Thread.sleep(3000);
+                    System.out.println("당신은 더 넓은 세상을 향해 나아갑니다...");
+
+                    Thread.sleep(3000);
+                    System.out.print("THE BOXER END");
+
+                    Thread.sleep(3000);
+                    System.out.println("...?");
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                System.exit(0);
+            }
             enemyOrder++;
         } else {
             System.out.println("\n무승부!! 리매치!!");

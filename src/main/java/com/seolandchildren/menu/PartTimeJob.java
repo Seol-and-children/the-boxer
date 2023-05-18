@@ -20,13 +20,13 @@ public class PartTimeJob {
         System.out.println("아르바이트 진행중...");
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             System.out.println("아르바이트 진행중...");
 
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             System.out.println("아르바이트 진행중...");
 
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -14,7 +14,7 @@ public class Player {
     public Player() {
         name = Naming.playerName;
         strength = 10;
-        agility = 10;
+        agility = 100;
         stamina = 100;
         equipment = new Item("맨 주먹", 0, 0); // 초기 장비
         money = 10000;

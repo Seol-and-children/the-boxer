@@ -51,14 +51,14 @@ public class Takebreak {
             System.out.println("돼지 꿈을 꿨습니다. 스텟이 대폭 상승합니다!");
             int statToIncrease = random.nextInt(3); // 0부터 2까지의 난수 생성
             if (statToIncrease == 0) {
-                str += 10;
-                System.out.println("힘이 10 올랐습니다.");
+                str += 30;
+                System.out.println("힘이 30 올랐습니다.");
             } else if (statToIncrease == 1) {
                 dex += 10;
                 System.out.println("민첩이 10 올랐습니다.");
             } else {
-                hp += 10;
-                System.out.println("체력이 10 올랐습니다.");
+                hp += 50;
+                System.out.println("체력이 50 올랐습니다.");
             }
         }
 
